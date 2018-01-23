@@ -41,4 +41,4 @@ Source corpora is kept in the `corpus` directory in `deity.txt` files. Each mant
 be written in Devanagari Sanskrit and be each on a separate line. So you can add new
 mantras to existing deity files as well as add new files. 
 
-Please contact me directly at [yakninjayeti@gmail.com](yakninjayeti@gmail.com) to add new mantras and deities to the project.
+Please contact me directly at [yakninjayeti@gmail.com](mailto:yakninjayeti@gmail.com) to add new mantras and deities to the project.
