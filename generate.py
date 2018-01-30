@@ -24,7 +24,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-d", "--deities",
                     help="use only mantras for a given deities (comma separated list)")
 parser.add_argument("-l", "--list-deities", action="store_true",
-                    help="print all possible deities and exit")
+                    help="print all possible deities (well, not all of them are deities) and exit")
 parser.add_argument("-v", "--verbose", action="store_true",
                     help="increase output verbosity")
 parser.add_argument("-n", "--no-output-test", action="store_false",
@@ -44,6 +44,9 @@ parser.add_argument("-f", "--format", type=str, default='IAST', choices=['IAST',
                     help="output format (default is IAST)")
 parser.add_argument("-c", "--count", type=int, default=1,
                     help="count of mantras to generate (default 1). Each mantra will start from a new line")
+parser.add_argument("-w", "--words", type=int, default=0,
+                    help="count of words per mantra. Will try to generate it using --tries count, so set "
+                    "larger number in --tries if you can't get desired number of words")
 
 args = parser.parse_args()
 
@@ -73,7 +76,19 @@ if len(models) == 0:
 model = markovify.combine(models)
 
 for i in range(args.count):
-    mantra = model.make_short_sentence(min_chars=args.min, max_chars=args.max, tries=args.tries, test_output=args.no_output_test)
+    if args.words > 0:
+        word_tries = args.tries
+    else:
+        word_tries = 1
+
+    mantra = None
+    for k in range(word_tries):
+        mantra = model.make_short_sentence(min_chars=args.min, max_chars=args.max, tries=args.tries, test_output=args.no_output_test)
+        if args.words == 0:
+            break
+        if len(mantra.split()) == args.words:
+            break
+        mantra = None
 
     if mantra is None:
         print('Error: could not generate mantra with given constraints')
