@@ -1,5 +1,7 @@
 # mantra-generator
 
+Part of the [UNSONG re-narration project](https://yakninja.pro/unsong-re-narration)
+
 Generates mantras in Sanskrit, allowing you to discover secret mantras. 
 
 Those are not just words taken in random order: by using Markov chains we extract 
