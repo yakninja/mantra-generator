@@ -1,6 +1,6 @@
 # mantra-generator
 
-Part of the [UNSONG re-narration project](https://yakninja.pro/unsong-re-narration)
+Part of the Part of the [UNSONG re-narration project, UNCHANT](https://unchant.com)
 
 Generates mantras in Sanskrit, allowing you to discover secret mantras. 
 
